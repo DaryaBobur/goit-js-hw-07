@@ -5,7 +5,7 @@ const galleryEl = document.querySelector('.gallery');
 
 galleryEl.insertAdjacentHTML('beforeend', createGallery(galleryItems));
 
-galleryEl.addEventListener('click', cardGallery)
+galleryEl.addEventListener('click', cardGallery);
 
 function createGallery(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
@@ -28,11 +28,18 @@ function cardGallery(e) {
     if (!e.target.classList.contains('gallery__image')) {
         return;
     }
+  
+  document.addEventListener('keydown', closeModalEsc);
 
-    basicLightbox.create(`
-		<img width="1280" height="auto" src= "${e.target.dataset.source}">
-	`).show()
+  const instance = basicLightbox.create(`
+	<img width="1280" height="auto" src= "${e.target.dataset.source}">`);
+  instance.show();
+
+  function closeModalEsc(e) {
+    if (e.code === "Escape") {
+      instance.close()
+     }
+}
 }
 
 console.log(galleryItems);
-
