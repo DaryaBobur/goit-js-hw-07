@@ -9,9 +9,9 @@ galleryEl.addEventListener('click', cardGallery)
 function createGallery(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `
-    <a class="gallery__item" href="${original}">
+   <li class="gallery__list"><a class="gallery__item" href="${original}">
     <img class="gallery__image" src="${preview}" alt="${description}" />
-    </a>`
+    </a></li>`
     }).join('');
 }
 
@@ -23,8 +23,11 @@ function cardGallery(e) {
 
 }
         
-let gallery = new SimpleLightbox('.gallery > a');
-gallery.on('show.simplelightbox');
-
+new SimpleLightbox('.gallery__item', {
+    captionSelector: 'img',
+    captionsData: 'alt',
+    captionsPosition: 'bottom',
+    captionDelay: 250
+});
 
 console.log(galleryItems);
