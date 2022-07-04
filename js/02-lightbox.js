@@ -4,8 +4,6 @@ const galleryEl = document.querySelector('.gallery');
 
 galleryEl.insertAdjacentHTML('beforeend', createGallery(galleryItems));
 
-galleryEl.addEventListener('click', cardGallery)
-
 function createGallery(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `
