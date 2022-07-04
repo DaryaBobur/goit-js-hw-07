@@ -28,8 +28,9 @@ function cardGallery(e) {
     if (!e.target.classList.contains('gallery__image')) {
         return;
     }
-  
+ 
   document.addEventListener('keydown', closeModalEsc);
+
 
   const instance = basicLightbox.create(`
 	<img width="1280" height="auto" src= "${e.target.dataset.source}">`);
@@ -37,9 +38,12 @@ function cardGallery(e) {
 
   function closeModalEsc(e) {
     if (e.code === "Escape") {
-      instance.close()
-     }
-}
+    instance.close()
+    document.removeEventListener('keydown', closeModalEsc);
+    }
+    
+  }
+    
 }
 
 console.log(galleryItems);
