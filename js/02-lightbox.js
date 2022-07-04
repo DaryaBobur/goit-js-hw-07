@@ -12,14 +12,6 @@ function createGallery(galleryItems) {
     </a></li>`
     }).join('');
 }
-
-function cardGallery(e) {
-    e.preventDefault();
-    if (!e.target.classList.contains('gallery__image')) {
-        return;
-}  
-
-}
         
 new SimpleLightbox('.gallery__item', {
     captionSelector: 'img',
